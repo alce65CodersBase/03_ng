@@ -66,7 +66,9 @@ Se crea la rama de configuración y utiliza
 
 ### Proyectos
 
-Se añade un primer proyecto
+Nueva rama feature/project
+
+Se añade un primer proyecto tipo **application**
 
 ```shell
 cd <workspace>
@@ -89,6 +91,29 @@ CREATE .eslintrc.json (934 bytes)
 CREATE projects/users/.eslintrc.json (645 bytes)
 UPDATE angular.json (4350 bytes)
 ```
+
+Se añade un primer proyecto tipo **library**
+
+```shell
+cd <workspace>
+ng g lib <project-name> -p <prefijo>
+```
+
+Se compila para producción localmente
+
+```shell
+npm build --project <project-name>
+```
+
+Se añade la dependencia en package.json
+
+```json
+"dependencies": {
+  "core": "file:./dist/core",
+},
+ ```
+
+Se importa en AppModule el ngMódulo exportado desde la librería
 
 ### CLI Commands
 
