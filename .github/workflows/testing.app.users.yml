@@ -9,7 +9,7 @@ on:
 
 jobs:
   Test:
-    name: Tests Lib Core
+    name: Tests App Users
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

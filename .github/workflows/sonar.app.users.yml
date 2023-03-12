@@ -39,7 +39,7 @@ permissions:
 
 jobs:
   SonarCloud:
-    name: SonarCloud Lib Core
+    name: SonarCloud App Users
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
