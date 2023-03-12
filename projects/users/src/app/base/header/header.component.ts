@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TasksService } from '../../tasks/services/tasks.service';
 
 @Component({
   selector: 'sdi-header',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   tasksNumber: number;
-  constructor() {
+  constructor(public srv: TasksService) {
     this.tasksNumber = 0;
+    srv.tasks$.subscribe((data) => (this.tasksNumber = data.length));
   }
 }
