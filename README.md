@@ -111,7 +111,7 @@ Se añade la dependencia en package.json
 "dependencies": {
   "core": "file:./dist/core",
 },
- ```
+```
 
 Se importa en AppModule el ngMódulo exportado desde la librería
 
