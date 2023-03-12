@@ -39,7 +39,7 @@ permissions:
 
 jobs:
   SonarCloud:
-    name: SonarCloud full repository
+    name: SonarCloud App Users
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -49,12 +49,14 @@ jobs:
         run: npm ci
       - name: Testing coverage
         run: npm run test:prod #Change for a valid npm script
+        working-directory: projects/users
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #with:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_APP_USERS }}
+        with:
+          projectBaseDir: projects/users
         # Additional arguments for the sonarcloud scanner
         #args:
         # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)

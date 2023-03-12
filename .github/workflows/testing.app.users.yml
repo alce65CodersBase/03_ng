@@ -9,7 +9,7 @@ on:
 
 jobs:
   Test:
-    name: Tests full repository
+    name: Tests App Users
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,4 +19,4 @@ jobs:
         run: npm ci
       - name: Testing coverage
         run: npm run test:prod #Change for a valid npm script
-
+        working-directory: projects/users
