@@ -1,6 +1,9 @@
 {
   "name": "core",
   "version": "0.0.1",
+  "scripts": {
+    "test:prod": "echo \"Error: no test specified: Initial for Sonar\" && exit 0"
+  },
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"
