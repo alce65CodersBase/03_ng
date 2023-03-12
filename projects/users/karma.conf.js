@@ -29,7 +29,7 @@ module.exports = function (config) {
       dir: require("path").join(__dirname, "../../coverage/users"),
       reporters: [{ type: "html" }, { type: "text-summary" }, { type: "lcov" }],
     },
-    reporters: ["mocha", "kjhtml"],
+    reporters: ["progress", "kjhtml"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
   });
