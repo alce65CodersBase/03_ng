@@ -136,3 +136,18 @@ dándole al repositorio la configuración adecuada como monorepo
   - Testing: referencia a la carpeta como "working-directory:"
   - Sonar: referencia al Secret y a la carpeta como "with: projectBaseDir:"
 - Se añade el fichero de configuración de Sonar
+
+### Configuración testing
+
+Se crea el fichero de configuración de karma y se actualizan los datos de angular.json
+en cada proyecto
+
+```shell
+ng g config karma --project <project-name> 
+```
+
+Se instala el plugin de reporter tipo mocha
+
+```shell
+npm i -D karma-mocha-reporter
+```
