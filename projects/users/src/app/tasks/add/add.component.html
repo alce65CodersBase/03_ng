@@ -1,0 +1,25 @@
+<h3>
+  <button (click)="isDisplayForm = !isDisplayForm">
+    <ng-container *ngIf="isDisplayForm; else tarea">
+      Ocultar
+    </ng-container>
+    <ng-template #tarea>
+      Mostrar añadir tarea
+    </ng-template>
+  </button>
+</h3>
+
+
+<form *ngIf="isDisplayForm" [formGroup]="newTaskForm" (ngSubmit)="handleSubmit()">
+  <div class="form-group">
+    <label for="">Título</label>
+    <input type="text" formControlName="title">
+  </div>
+  <div class="form-group">
+    <label for="">Owner</label>
+    <input type="text" formControlName="owner">
+  </div>
+  <button type="submit" [disabled]="newTaskForm.invalid">
+    Añadir
+  </button>
+</form>
