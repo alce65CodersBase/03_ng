@@ -27,9 +27,11 @@ module.exports = function (config) {
     },
     coverageReporter: {
       dir: require("path").join(__dirname, "../../coverage/users"),
-      reporters: [{ type: "html" }, { type: "text-summary" }, { type: "lcov" }],
+      subdir: ".",
+      reporters: [{ type: "text" }, { type: "lcov" }],
+      includeAllSources: true,
     },
-    reporters: ["progress", "kjhtml"],
+    reporters: ["mocha", "kjhtml"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
   });
