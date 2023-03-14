@@ -3,44 +3,54 @@ import { BehaviorSubject } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { HomeComponent } from './home.component';
-import { TasksService } from '../tasks/services/tasks.service';
-import { Task } from '../tasks/models/task.model';
+import { UsersService } from '../about/services/users.service';
+import { HomeService } from './services/home.service';
+import { User } from '../about/models/user.model';
 
-const mockTask: Task = {
+const mockUser: User = {
   id: 1,
-  title: 'Test title',
-  owner: 'Test owner',
-  isCompleted: false,
+  firstName: 'First name',
+  surname: 'Surname',
+  isAdmin: false,
 };
-const mockTasks: Task[] = [mockTask];
+const mockUsers: User[] = [mockUser];
 
 const noop = () => {
   // No operations
 };
 
-const mockTaskService: TasksService = {
+const mockHomeService: HomeService = {
   greetings: noop,
-  tasks$: new BehaviorSubject([...mockTasks]),
-} as TasksService;
+};
+
+const mockUserService: UsersService = {
+  users$: new BehaviorSubject([...mockUsers]),
+} as UsersService;
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let debugElement: DebugElement;
-  let service: TasksService;
+  let service1: HomeService;
+  let service2: UsersService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],
       providers: [
         {
-          provide: TasksService,
-          useValue: mockTaskService,
+          provide: HomeService,
+          useValue: mockHomeService,
+        },
+        {
+          provide: UsersService,
+          useValue: mockUserService,
         },
       ],
     }).compileComponents();
-    service = TestBed.inject(TasksService);
-    spyOn(service, 'greetings').and.callThrough();
+    service1 = TestBed.inject(HomeService);
+    service2 = TestBed.inject(UsersService);
+    spyOn(service1, 'greetings').and.callThrough();
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
@@ -53,13 +63,13 @@ describe('HomeComponent', () => {
   });
 
   it('should call service method', () => {
-    expect(service.greetings).toHaveBeenCalled();
+    expect(service1.greetings).toHaveBeenCalled();
   });
 
   it('should render the data of the service', () => {
     const pElement: HTMLParagraphElement = debugElement.query(
       By.css('p')
     ).nativeElement;
-    expect(pElement.innerText).toContain(String(mockTasks.length));
+    expect(pElement.innerText).toContain(String(mockUsers.length));
   });
 });
