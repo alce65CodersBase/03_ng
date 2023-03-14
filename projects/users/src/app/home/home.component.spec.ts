@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { UsersService } from '../about/services/users.service';
 import { HomeService } from './services/home.service';
 import { User } from '../about/models/user.model';
+import { CoreModule } from 'projects/core/src/public-api';
 
 const mockUser: User = {
   id: 1,
@@ -37,6 +38,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],
+      imports: [CoreModule],
       providers: [
         {
           provide: HomeService,
