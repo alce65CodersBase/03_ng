@@ -69,13 +69,13 @@ describe('ListComponent', () => {
     // HTML based mode
     const rendered = fixture.nativeElement as HTMLElement;
     expect(rendered.querySelector('h2')?.textContent?.toLowerCase()).toContain(
-      'tareas'
+      'usuarios'
     );
     // Angular based mode
     const header: HTMLHeadElement = debugElement.query(
       By.css('h2')
     ).nativeElement;
-    expect(header.textContent?.toLowerCase()).toContain('tareas');
+    expect(header.textContent?.toLowerCase()).toContain('usuarios');
   });
 
   it('should add new user to the array', () => {
