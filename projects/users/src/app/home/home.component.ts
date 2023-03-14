@@ -6,6 +6,8 @@ import { HomeService } from './services/home.service';
   template: `
     <h1>Home</h1>
     <p>Users: {{ usersNumber }}</p>
+    <p>Sample of a component included in a module imported from the library:</p>
+    <sdi-core></sdi-core>
   `,
   styleUrls: ['./home.component.scss'],
 })
