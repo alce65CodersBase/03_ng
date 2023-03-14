@@ -87,7 +87,8 @@
             ],
             "styles": ["projects/users/src/styles.scss"],
             "scripts": [],
-            "karmaConfig": "projects/users/karma.conf.js"
+            "karmaConfig": "projects/users/karma.conf.js",
+            "codeCoverageExclude": ["**/*.module.ts"]
           }
         },
         "lint": {
@@ -126,10 +127,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/core/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "karmaConfig": "projects/core/karma.conf.js"
           }
         },

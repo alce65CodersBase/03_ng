@@ -1,0 +1,4 @@
+<h2>{{task.title}}</h2>
+<p>{{task.owner}}</p>
+<input type="checkbox" name="" id="" [value]=task.isCompleted (change)="handleChange()">
+<button (click)="handleDelete()">Delete</button>
