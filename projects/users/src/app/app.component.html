@@ -1,5 +1,4 @@
-<sdi-core></sdi-core>
-<h1>{{title}}</h1>
-<sdi-layout>
+<sdi-layout [title]="title" [brand]="brand" [menuOptions]="menuOptions">
+  <sdi-core></sdi-core>
   <router-outlet></router-outlet>
 </sdi-layout>

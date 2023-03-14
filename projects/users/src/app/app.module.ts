@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from '../../../core/src/lib/core.module';
-import { BaseModule } from './base/base.module';
+import { LayoutComponent } from 'projects/core/src/lib/layout/layout.component';
+import { CoreModule } from 'projects/core/src/lib/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +15,7 @@ import { BaseModule } from './base/base.module';
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    BaseModule,
+    LayoutComponent,
   ],
 })
 export class AppModule {}
