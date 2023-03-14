@@ -10,10 +10,11 @@ export const getTasks = async (): Promise<Task[]> => [
 @Injectable({
   providedIn: 'root',
 })
-export class realGetTasks {
-  constructor(public http: HttpClient) {
-    //
-    http.post(
+export class TasksRepoService {
+  constructor(public http: HttpClient) {}
+
+  createTask() {
+    return this.http.post(
       '',
       {},
       {
