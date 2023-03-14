@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 20vh;
+  background-color: maroon;
+  color: bisque;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  header {
+    flex-direction: row;
+  }
+}

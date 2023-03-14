@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 100 0 50vh;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}

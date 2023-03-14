@@ -12,13 +12,12 @@ describe('LayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        LayoutComponent,
+      imports: [
+        RouterTestingModule,
         HeaderComponent,
         MenuComponent,
         FooterComponent,
       ],
-      imports: [RouterTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);
