@@ -1,0 +1,25 @@
+<h3>
+  <button (click)="isDisplayForm = !isDisplayForm">
+    <ng-container *ngIf="isDisplayForm; else user">
+      Ocultar
+    </ng-container>
+    <ng-template #user>
+      Mostrar añadir usuario
+    </ng-template>
+  </button>
+</h3>
+
+
+<form *ngIf="isDisplayForm" [formGroup]="newUserForm" (ngSubmit)="handleSubmit()">
+  <div class="form-group">
+    <label for="">Nombre</label>
+    <input type="text" formControlName="firstName">
+  </div>
+  <div class="form-group">
+    <label for="">Apellido</label>
+    <input type="text" formControlName="surname">
+  </div>
+  <button type="submit" [disabled]="newUserForm.invalid">
+    Añadir
+  </button>
+</form>

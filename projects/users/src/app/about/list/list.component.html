@@ -1,0 +1,9 @@
+<h2>Lista de usuarios</h2>
+
+<sdi-add (added)="handleAdd($event)"></sdi-add>
+
+<ul>
+  <li *ngFor="let item of users">
+    <sdi-card [user]=item (deleted)="handleDelete($event)" (changed)="handleChange($event)"></sdi-card>
+  </li>
+</ul>
