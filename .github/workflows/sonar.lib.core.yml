@@ -26,7 +26,7 @@
 # Feel free to take a look at our documentation (https://docs.sonarcloud.io/getting-started/github/)
 # or reach out to our community forum if you need some help (https://community.sonarsource.com/c/help/sc/9)
 
-name: SonarCloud Analysis
+name: SonarCloud Analysis (Lib)
 on:
   push:
     branches:
@@ -42,7 +42,7 @@ jobs:
     name: SonarCloud Lib Core
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install modules
