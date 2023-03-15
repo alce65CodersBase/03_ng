@@ -11,9 +11,9 @@ import { UsersService } from '../services/users.service';
 export class AddComponent {
   isDisplayForm: boolean;
   newUserForm: FormGroup;
-  @Output() added: EventEmitter<User>;
+  // @Output() added: EventEmitter<User>;
   constructor(public fb: FormBuilder, public srv: UsersService) {
-    this.added = new EventEmitter();
+    // this.added = new EventEmitter();
     this.isDisplayForm = false;
     this.newUserForm = fb.group({
       firstName: ['', [Validators.required]],
@@ -29,7 +29,7 @@ export class AddComponent {
       surname: this.newUserForm.value.owner,
       isAdmin: false,
     };
-    // this.onAdd.next(newUser);
+    // this.added.next(newUser);
     this.srv.handleAdd(newUser);
     this.newUserForm.reset();
   }

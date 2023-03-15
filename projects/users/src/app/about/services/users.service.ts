@@ -24,4 +24,18 @@ export class UsersService {
 
     console.log(this.users$.value);
   }
+
+  handleDelete(id: number) {
+    const newValue = this.users$.value.filter((item) => item.id !== id);
+    this.users$.next(newValue);
+    console.log('Users after delete:', this.users$.value);
+  }
+
+  handleChange(user: User) {
+    const newValue = this.users$.value.map((item) =>
+      item.id === user.id ? user : item
+    );
+    this.users$.next(newValue);
+    console.log('Users after update:', this.users$.value);
+  }
 }

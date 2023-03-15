@@ -30,6 +30,8 @@ describe('ListComponent', () => {
     mockUserService = {
       greetings: noop,
       handleAdd: noop,
+      handleChange: noop,
+      handleDelete: noop,
       users$: new BehaviorSubject([...mockUsers]),
     };
 
@@ -76,28 +78,5 @@ describe('ListComponent', () => {
       By.css('h2')
     ).nativeElement;
     expect(header.textContent?.toLowerCase()).toContain('usuarios');
-  });
-
-  it('should add new user to the array', () => {
-    fixture.detectChanges();
-    component.handleAdd({} as User);
-    expect(component.users.length).toBe(2);
-  });
-
-  it('should update a user from the array', () => {
-    fixture.detectChanges();
-    component.handleAdd({} as User);
-    component.handleChange({
-      id: 1,
-      isAdmin: true,
-    } as User);
-    expect(component.users.length).toBe(2);
-    expect(component.users[0].isAdmin).toBeTrue();
-  });
-
-  it('should delete a user from the array', () => {
-    fixture.detectChanges();
-    component.handleDelete(1);
-    expect(component.users.length).toBe(0);
   });
 });

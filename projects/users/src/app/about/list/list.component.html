@@ -1,9 +1,22 @@
 <h2>Lista de usuarios</h2>
 
+<!--
+Si el componente es el único que accede al servicio,
+responde a los eventos de sus componentes hijos
+
 <sdi-add (added)="handleAdd($event)"></sdi-add>
 
 <ul>
   <li *ngFor="let item of users">
     <sdi-card [user]=item (deleted)="handleDelete($event)" (changed)="handleChange($event)"></sdi-card>
+  </li>
+</ul> -->
+
+
+<sdi-add></sdi-add>
+
+<ul>
+  <li *ngFor="let item of users">
+    <sdi-card [user]=item></sdi-card>
   </li>
 </ul>

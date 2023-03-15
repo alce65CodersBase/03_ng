@@ -20,18 +20,18 @@ export class ListComponent implements OnInit {
     });
   }
 
-  handleDelete(id: number) {
-    this.users = this.users.filter((item) => item.id !== id);
-    console.log('Users after delete:', this.users);
-  }
+  // El componente "controlador"
+  // podría traerse los métodos del estado
+  // y actuar como intermediario para los componentes presentadores
+  // handleAdd(user: User) {
+  //   this.srv.handleAdd(user);
+  // }
 
-  handleChange(user: User) {
-    this.users = this.users.map((item) => (item.id === user.id ? user : item));
-    console.log('Users after update:', this.users);
-  }
+  // handleDelete(id: number) {
+  //   this.srv.handleDelete(id);
+  // }
 
-  handleAdd(user: User) {
-    this.users.push(user);
-    console.log('Users after add:', this.users);
-  }
+  // handleChange(user: User) {
+  //   this.srv.handleChange(user);
+  // }
 }

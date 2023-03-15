@@ -19,8 +19,27 @@ describe('UsersService', () => {
     service.greetings();
   });
 
-  it('should use handleAdd()', () => {
+  it('should use handleAdd() for add new user to the state', () => {
     service.handleAdd({} as User);
+    expect(service.users$.value.length).toBe(1);
+  });
+
+  it('should use handleChange() for update a user from the array', () => {
+    service.handleAdd({ id: 1, isAdmin: false } as User);
+    service.handleAdd({ id: 2, isAdmin: false } as User);
+    service.handleChange({
+      id: 1,
+      isAdmin: true,
+    } as User);
+    expect(service.users$.value.length).toBe(2);
+    expect(service.users$.value[0].isAdmin).toBeTrue();
+  });
+
+  it('should use handleDelete() delete for a user from the array', () => {
+    //   fixture.detectChanges();
+    service.handleAdd({ id: 1, isAdmin: false } as User);
+    service.handleAdd({ id: 2, isAdmin: false } as User);
+    service.handleDelete(1);
     expect(service.users$.value.length).toBe(1);
   });
 });
