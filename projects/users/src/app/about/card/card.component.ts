@@ -9,23 +9,16 @@ import { UsersService } from '../services/users.service';
 })
 export class CardComponent {
   @Input() user!: User;
-  // @Output() deleted: EventEmitter<number>;
-  // @Output() changed: EventEmitter<User>;
 
-  constructor(public srv: UsersService) {
-    // this.deleted = new EventEmitter();
-    // this.changed = new EventEmitter();
-  }
+  constructor(public srv: UsersService) {}
 
   handleDelete() {
     console.log('Borrando', this.user.id);
-    // this.deleted.next(this.user.id);
     this.srv.handleDelete(this.user.id);
   }
 
   handleChange() {
     this.user.isAdmin = !this.user.isAdmin;
-    // this.changed.next(this.user);
     this.srv.handleChange(this.user);
   }
 }
