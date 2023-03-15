@@ -34,7 +34,7 @@ module.exports = function (config) {
       reporters: [{ type: "text" }, { type: "lcov" }],
       includeAllSources: true,
     },
-    reporters: ["mocha", "kjhtml"],
+    reporters: ["mocha", "kjhtml", "coverage"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
   });
