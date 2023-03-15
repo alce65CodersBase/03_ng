@@ -2,7 +2,7 @@
   "name": "core",
   "version": "0.0.1",
   "scripts": {
-    "test:prod": "echo \"Error: no test specified: Initial for Sonar\" && exit 0"
+    "test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
   },
   "peerDependencies": {
     "@angular/common": "^15.2.0",
