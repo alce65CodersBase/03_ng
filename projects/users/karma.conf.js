@@ -29,13 +29,15 @@ module.exports = function (config) {
       "src/**/!(*spec | *mock).ts": "coverage",
     },
     coverageReporter: {
-      dir: require("path").join(__dirname, "../../coverage/users"),
+      dir: require("path").join(__dirname, "../../coverage"),
       subdir: ".",
-      reporters: [{ type: "text" }, { type: "lcov" }],
+      reporters: [{ type: "text" }, { type: "lcov", subdir: "users" }],
       includeAllSources: true,
     },
-    reporters: ["mocha", "kjhtml", "coverage"],
+    reporters: ["mocha", "kjhtml"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
+    logLevel: config.LOG_INFO,
+    colors: true,
   });
 };
