@@ -29,7 +29,7 @@ module.exports = function (config) {
       "src/**/!(*spec | *mock).ts": "coverage",
     },
     coverageReporter: {
-      dir: require("path").join(__dirname, "../../coverage"),
+      dir: "../../coverage",
       reporters: [{ type: "text" }, { type: "lcov", subdir: "core" }],
       includeAllSources: true,
     },
