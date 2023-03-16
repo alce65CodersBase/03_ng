@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import { TasksService } from '../tasks/services/tasks.service';
 
 @Component({
   selector: 'sdi-about',
-  template: ` <p>about works!</p> `,
+  template: `<sdi-list></sdi-list>`,
   styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent {
-  constructor(public srv: TasksService) {
-    this.srv.greetings();
-  }
-}
+export class AboutComponent {}

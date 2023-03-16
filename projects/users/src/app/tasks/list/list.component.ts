@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task.model';
-import { TasksService } from '../services/tasks.service';
+import { getTasks } from '../services/mock.data';
 
 @Component({
   selector: 'sdi-list',
@@ -9,15 +9,13 @@ import { TasksService } from '../services/tasks.service';
 })
 export class ListComponent implements OnInit {
   tasks: Task[];
-  constructor(public srv: TasksService) {
+  constructor() {
     this.tasks = [];
   }
 
   async ngOnInit(): Promise<void> {
-    this.srv.tasks$.subscribe((data) => {
-      this.tasks = data;
-      console.log('Tasks after load:', this.tasks);
-    });
+    this.tasks = await getTasks();
+    console.log('Tasks after load:', this.tasks);
   }
 
   handleDelete(id: number) {

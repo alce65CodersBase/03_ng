@@ -1,4 +1,4 @@
-name: Testing Analysis
+name: Testing Analysis (App)
 
 on:
   push:
@@ -18,5 +18,5 @@ jobs:
       - name: Install modules
         run: npm ci
       - name: Testing coverage
-        run: npm run test:prod #Change for a valid npm script
+        run: npm run test:prod --project users
         working-directory: projects/users

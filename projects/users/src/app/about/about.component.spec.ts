@@ -1,32 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AboutComponent } from './about.component';
-import { TasksService } from '../tasks/services/tasks.service';
-
-const noop = () => {
-  // No operations
-};
-
-const mockTaskService: TasksService = {
-  greetings: noop,
-} as TasksService;
-
+import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
+import { CardComponent } from './card/card.component';
 describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
-  let service: TasksService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AboutComponent],
-      providers: [
-        {
-          provide: TasksService,
-          useValue: mockTaskService,
-        },
+      declarations: [
+        AboutComponent,
+        ListComponent,
+        AddComponent,
+        CardComponent,
       ],
     }).compileComponents();
-    service = TestBed.inject(TasksService);
-    spyOn(service, 'greetings').and.callThrough();
+
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -34,9 +24,5 @@ describe('AboutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should call service method', () => {
-    expect(service.greetings).toHaveBeenCalled();
   });
 });

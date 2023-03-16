@@ -25,13 +25,16 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true, // removes the duplicated traces
     },
+    preprocessors: {
+      "src/**/!(*spec | *mock).ts": "coverage",
+    },
     coverageReporter: {
       dir: require("path").join(__dirname, "../../coverage/core"),
       subdir: ".",
       reporters: [{ type: "text" }, { type: "lcov" }],
       includeAllSources: true,
     },
-    reporters: ["mocha", "kjhtml"],
+    reporters: ["mocha", "kjhtml", "coverage"],
     browsers: ["Chrome"],
     restartOnFileChange: true,
   });
