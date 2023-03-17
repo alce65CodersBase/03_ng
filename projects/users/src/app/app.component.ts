@@ -11,7 +11,7 @@ export class AppComponent {
   title: string;
   brand: string;
   menuOptions: MenuItem[];
-  constructor() {
+  constructor(private userSrv: UserService) {
     this.title = 'Angular samples: User';
     this.brand = 'ISDI Coders';
     this.menuOptions = [
@@ -22,6 +22,6 @@ export class AppComponent {
     this.handleProfile = this.handleProfile.bind(this);
   }
   handleProfile() {
-    console.log('Handle profile');
+    this.userSrv.loadProfile();
   }
 }
