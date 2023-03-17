@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from 'projects/core/src/lib/layout/layout.component';
-import { UserService } from './services/user.service';
+import { UserStateService } from './services/user.state.service';
 
 const noop = () => {
   // No operations
@@ -15,7 +15,7 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   // let debugElement: DebugElement;
-  let service: UserService;
+  let service: UserStateService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +23,7 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       providers: [
         {
-          provide: UserService,
+          provide: UserStateService,
           useValue: {
             loadProfile: noop,
           },
@@ -31,7 +31,7 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
 
-    service = TestBed.inject(UserService);
+    service = TestBed.inject(UserStateService);
     spyOn(service, 'loadProfile').and.callThrough();
 
     fixture = TestBed.createComponent(AppComponent);

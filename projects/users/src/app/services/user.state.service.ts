@@ -1,18 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLogged, UserLogin, UserRegister } from '../../models/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { UserRepoService } from './user.repo.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UserStateService {
   userLogged$: BehaviorSubject<UserLogged | null>;
-  apiUrl: string;
-  constructor(public http: HttpClient, public router: Router) {
+
+  constructor(public repo: UserRepoService, public router: Router) {
     this.userLogged$ = new BehaviorSubject<UserLogged | null>(null);
-    this.apiUrl = '';
   }
 
   loadProfile() {
@@ -21,7 +20,7 @@ export class UserService {
   }
 
   register(userRegister: UserRegister) {
-    this.http.post(this.apiUrl + '/registration', userRegister).subscribe({
+    this.repo.createRegister(userRegister).subscribe({
       next: () => console.log('Registration OK'),
       error: (err: Error) => console.error(err.message),
     });
@@ -32,7 +31,7 @@ export class UserService {
   }
 
   login(userLogin: UserLogin) {
-    this.http.post(this.apiUrl + '/login', userLogin).subscribe({
+    this.repo.sendLoginData(userLogin).subscribe({
       next: (userLogged) => {
         if (!this.checkIsUserLogged(userLogged))
           throw new Error('Invalid data from server');
