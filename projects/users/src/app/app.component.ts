@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'projects/core/src/lib/types/menu.item';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'sdi-root',
@@ -18,5 +19,9 @@ export class AppComponent {
       { path: 'tasks', label: 'Tareas' },
       { path: 'about', label: 'Nosotros' },
     ];
+    this.handleProfile = this.handleProfile.bind(this);
+  }
+  handleProfile() {
+    console.log('Handle profile');
   }
 }
