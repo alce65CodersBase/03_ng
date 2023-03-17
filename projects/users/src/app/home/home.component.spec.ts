@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { HomeComponent } from './home.component';
 import { UsersService } from '../about/services/users.service';
 import { HomeService } from './services/home.service';
-import { User } from '../about/models/user.model';
+import { User } from '../../models/user.model';
 import { CoreModule } from 'projects/core/src/public-api';
 
 const mockUser: User = {

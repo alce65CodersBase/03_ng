@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../models/task.model';
+import { Task } from '../../../models/task.model';
 import { HttpClient } from '@angular/common/http';
 
 export const getTasks = async (): Promise<Task[]> => [
