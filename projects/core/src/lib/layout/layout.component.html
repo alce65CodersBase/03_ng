@@ -1,5 +1,7 @@
 <sdi-header [title]="title">
-  <sdi-menu [items]="menuOptions"></sdi-menu>
+  <sdi-menu [items]="menuOptions">
+    <sdi-profile [handleProfile]="handleProfile"></sdi-profile>
+  </sdi-menu>
 </sdi-header>
 <main>
   <ng-content></ng-content>

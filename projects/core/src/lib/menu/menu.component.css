@@ -1,3 +1,8 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
 ul {
   display: flex;
   flex-direction: row;
