@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLogged, UserLogin, UserRegister } from '../../models/user.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, throwError } from 'rxjs';
 import { UserRepoService } from './user.repo.service';
 
 @Injectable({
@@ -27,19 +27,32 @@ export class UserStateService {
   }
 
   private checkIsUserLogged(userLogged: unknown): userLogged is UserLogged {
+    console.log({ userLogged });
     return (userLogged as UserLogged).email !== undefined;
   }
 
+  makeError() {
+    return new Error('Invalid data from server');
+  }
+
   login(userLogin: UserLogin) {
-    this.repo.sendLoginData(userLogin).subscribe({
-      next: (userLogged) => {
-        if (!this.checkIsUserLogged(userLogged))
-          throw new Error('Invalid data from server');
-        this.userLogged$.next(userLogged);
-        console.log('Logged', userLogged);
-      },
-      error: (err: Error) => console.error(err.message),
-    });
+    this.repo
+      .sendLoginData(userLogin)
+      .pipe(
+        map((data) => {
+          if (!this.checkIsUserLogged(data)) return throwError(this.makeError);
+          // El formato mas simple no permite testar la callback
+          // return throwError(() => new Error('Invalid data from server'));
+          return data;
+        })
+      )
+      .subscribe({
+        next: (userLogged) => {
+          this.userLogged$.next(userLogged as UserLogged);
+          console.log('Logged', userLogged);
+        },
+        error: (err: Error) => console.error(err.message),
+      });
   }
 
   logout() {
