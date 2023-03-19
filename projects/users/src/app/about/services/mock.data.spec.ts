@@ -4,7 +4,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { User } from '../models/user.model';
+import { User } from '../../../models/user.model';
 
 describe('getUsers', () => {
   it('it should return the mock array', async () => {

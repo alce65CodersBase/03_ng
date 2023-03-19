@@ -14,6 +14,8 @@ describe('HomeService', () => {
   });
 
   it('should use greetings()', () => {
+    console.log = jasmine.createSpy('log');
     service.greetings();
+    expect(console.log).toHaveBeenCalledWith('Hola');
   });
 });

@@ -46,7 +46,10 @@ Se añade el secret SONAR_TOKEN en el repositorio de GitHub
 Se incorporan localmente las Github Actions, incluyendo la de Sonar
 Se añade el fichero de configuración de Sonar
 
-Se verifican los comandos de sonar: linter, test:prod...
+Se verifican los comandos de sonar:
+
+- linter: npx eslint --ignore-path .gitignore 
+- test:prod: ng test --code-coverage --no-watch --browsers=ChromeHeadless",
 
 Se añade husky para los hooks de git
 
@@ -150,4 +153,21 @@ Se instala el plugin de reporter tipo mocha
 
 ```shell
 npm i -D karma-mocha-reporter
+```
+
+Se actualiza karma.config. Para un repo con un solo proyecto, sería:
+
+```js
+  {
+    coverageReporter: {
+      dir: require('path').join(__dirname, './coverage'),
+      subdir: '.',
+      reporters: [
+        { type: 'lcov' },
+        { type: 'text' }
+      ],
+      includeAllSources: true,
+    },
+  }
+
 ```

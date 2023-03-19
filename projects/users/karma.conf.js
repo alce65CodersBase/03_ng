@@ -25,9 +25,6 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true, // removes the duplicated traces
     },
-    preprocessors: {
-      "src/**/!(*spec | *mock).ts": "coverage",
-    },
     coverageReporter: {
       dir: "../../coverage",
       subdir: ".",

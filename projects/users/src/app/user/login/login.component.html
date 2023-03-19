@@ -1,0 +1,5 @@
+<h3>Login</h3>
+<form [formGroup]="form" (ngSubmit)="login()">
+  <sdi-controls [controls]="controls" [formGroup]="form"></sdi-controls>
+  <button type="submit" [disabled]="form.invalid">Login</button>
+</form>
