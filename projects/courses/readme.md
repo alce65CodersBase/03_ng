@@ -39,7 +39,7 @@ ng g @angular/material:ng-add --project <project-name>
 - Add package.json
 
 ```json
- "test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
+"test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
 ```
 
 - Add karma.config to the project
