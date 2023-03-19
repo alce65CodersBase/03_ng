@@ -9,7 +9,7 @@ import { CoursesRepoService } from '../services/courses.repo.service';
 })
 export class CoursesComponent {
   courses: Course[];
-  selectedCourse!: Course;
+  selectedCourse!: Course | null;
 
   constructor(private repoSrv: CoursesRepoService) {
     this.courses = [];
@@ -20,9 +20,12 @@ export class CoursesComponent {
   }
 
   selectCourse(course: Course | null) {
-    //
+    this.selectedCourse = course;
   }
-  deleteCourse(id: Course['id']) {
-    //
+  deleteCourse(ev: Event, id: Course['id']) {
+    ev.stopImmediatePropagation();
+    this.courses = this.courses.filter((course) => course.id !== id);
+    this.selectedCourse =
+      this.selectedCourse?.id === id ? null : this.selectedCourse;
   }
 }

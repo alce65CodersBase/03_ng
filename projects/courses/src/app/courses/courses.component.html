@@ -13,12 +13,10 @@
             <span matListItemLine>
               {{ course.description }}
             </span>
-            <span matListItemLine>
-              <button mat-icon-button color="warn" (click)="deleteCourse(course.id); $event.stopImmediatePropagation()">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </span>
 
+            <button mat-icon-button color="warn" (click)="deleteCourse($event, course.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
           </mat-list-item>
         </mat-list>
       </mat-card-content>
@@ -29,12 +27,12 @@
       <mat-card-header>
         <mat-card-title>
           <span *ngIf="selectedCourse?.id; else elseBlock">
-            {{selectedCourse.title | titlecase}}
+            {{selectedCourse?.title | titlecase}}
           </span>
           <ng-template #elseBlock>Select a Course</ng-template>
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content *ngIf="selectedCourse">
         <pre>{{selectedCourse | json}}</pre>
       </mat-card-content>
       <mat-card-actions>
