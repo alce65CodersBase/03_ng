@@ -16,10 +16,9 @@ describe('UsersService', () => {
   });
 
   it('should use greetings()', () => {
-    const spy = spyOn(console, 'log').and.callThrough();
+    console.log = jasmine.createSpy('log');
     service.greetings();
     expect(console.log).toHaveBeenCalledWith('Hola');
-    spy.calls.reset();
   });
 
   it('should use handleAdd() for add new user to the state', () => {
