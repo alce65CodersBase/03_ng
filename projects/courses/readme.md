@@ -27,3 +27,32 @@ Alternative in a project
 ```shell
 ng g @angular/material:ng-add --project <project-name>
 ```
+
+## Configure Sonar Analysis
+
+- Add in Sonar new project in the repositories selection, importing new monorepo: alce65codersbase_03_ng_app_courses
+- Create a secret in Sonar and add it to the GitHub repo settings (SONAR_TOKEN_APP_COURSES)
+- Add new GitHub Actions
+  - Testing
+  - Sonar
+- Add configuration file for sonar
+- Add package.json
+
+```json
+ "test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
+```
+
+- Add karma.config to the project
+
+```shell
+ng g config karma --project courses
+```
+
+- Update karma
+
+  - require("karma-mocha-reporter")
+  - coverageReporter: {
+      reporters: [{ type: "text" }, { type: "lcov" }],
+      includeAllSources: true,
+    }
+  - reporters: ["mocha", "kjhtml"],

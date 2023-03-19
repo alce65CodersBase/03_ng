@@ -159,6 +159,7 @@ Se actualiza karma.config. Para un repo con un solo proyecto, sería:
 
 ```js
   {
+    require("karma-mocha-reporter"),
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
@@ -168,6 +169,12 @@ Se actualiza karma.config. Para un repo con un solo proyecto, sería:
       ],
       includeAllSources: true,
     },
+    reporters: ["mocha", "kjhtml"],
   }
+```
 
+Se añade un package.json a nivel del proyecto, con el script test:prod
+
+```json
+ "test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
 ```
