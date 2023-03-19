@@ -1,10 +1,24 @@
 import { Component } from '@angular/core';
 
+type MenuOption = {
+  path: string;
+  icon: string;
+  title: string;
+};
+
 @Component({
   selector: 'sdi-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'courses';
+  title: string;
+  links: MenuOption[];
+  constructor() {
+    this.title = 'Courses from Angular 13 Fundamentals';
+    this.links = [
+      { path: '/home', icon: 'home', title: 'Home' },
+      { path: '/courses', icon: 'view_list', title: 'Courses' },
+    ];
+  }
 }
