@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-type MenuOption = {
-  path: string;
-  icon: string;
-  title: string;
-};
+import { MenuOption } from '../types/menu';
 
 @Component({
   selector: 'sdi-root',
