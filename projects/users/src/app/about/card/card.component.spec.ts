@@ -2,7 +2,7 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardComponent } from './card.component';
-import { User } from '../models/user.model';
+import { User } from '../../../models/user.model';
 import { UsersService } from '../services/users.service';
 
 const noop = () => {

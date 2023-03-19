@@ -1,0 +1,5 @@
+<h3>Register</h3>
+<form [formGroup]="form" (ngSubmit)="register()">
+  <sdi-controls [controls]="controls" [formGroup]="form"></sdi-controls>
+  <button type="submit" [disabled]="form.invalid">Register</button>
+</form>

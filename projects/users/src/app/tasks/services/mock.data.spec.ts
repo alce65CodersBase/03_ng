@@ -4,7 +4,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { Task } from '../models/task.model';
+import { Task } from '../../../models/task.model';
 
 describe('getTasks', () => {
   it('it should return the mock array', async () => {

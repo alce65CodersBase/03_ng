@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UsersService } from './users.service';
-import { User } from '../models/user.model';
+import { User } from '../../../models/user.model';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -16,7 +16,9 @@ describe('UsersService', () => {
   });
 
   it('should use greetings()', () => {
+    console.log = jasmine.createSpy('log');
     service.greetings();
+    expect(console.log).toHaveBeenCalledWith('Hola');
   });
 
   it('should use handleAdd() for add new user to the state', () => {

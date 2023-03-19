@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../models/task.model';
+import { Task } from '../../../models/task.model';
 
 @Component({
   selector: 'sdi-card',

@@ -2,7 +2,7 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardComponent } from './card.component';
-import { Task } from '../models/task.model';
+import { Task } from '../../../models/task.model';
 
 describe('CardComponent', () => {
   let component: CardComponent;

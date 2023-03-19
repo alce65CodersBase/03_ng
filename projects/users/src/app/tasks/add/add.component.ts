@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Task } from '../models/task.model';
+import { Task } from '../../../models/task.model';
 
 @Component({
   selector: 'sdi-add',

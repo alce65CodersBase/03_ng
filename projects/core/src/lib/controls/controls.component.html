@@ -1,0 +1,12 @@
+<ng-container *ngFor="let control of controls" [formGroup]="formGroup">
+  <div class="formGroup">
+    <input [type]="control.type" [id]="control.id" placeholder=" " [formControlName]="control.id">
+    <label [htmlFor]="control.id">{{control.label}}</label>
+  </div>
+  <div class="erorrMessage" *ngFor="let item of control.errorMessages"
+    [hidden]="formGroup.get(control.id)?.untouched || formGroup.get(control.id)?.valid">
+    <p *ngIf="formGroup.get(control.id)?.errors?.[item.key]">
+      {{item.msg}}
+    </p>
+  </div>
+</ng-container>
