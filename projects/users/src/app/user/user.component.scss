@@ -1,4 +1,16 @@
 :host {
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+p {
+  text-align: center;
+  span {
+    cursor: pointer;
+    text-decoration: underline gray;
+  }
 }
