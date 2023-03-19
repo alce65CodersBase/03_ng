@@ -1,26 +1,9 @@
-mat-card:not(.dashboard-card) {
-  margin-bottom: 20px;
-}
-
 .fill-remaining-space {
   flex: 1 1 auto;
 }
 
 .full-width {
   width: 100%;
-}
-
-.courses-containers {
-  display: flex;
-  justify-content: space-around;
-
-  .courses-list {
-    width: 49%;
-  }
-
-  .course-details {
-    width: 49%;
-  }
 }
 
 .login-container {
@@ -93,21 +76,8 @@ mat-card:not(.dashboard-card) {
   }
 }
 
-mat-list-item:not(:first-of-type) {
-  border-top: 1px solid #efefef;
-}
-
 mat-form-field {
   width: 100%;
-}
-
-mat-list-item:hover {
-  cursor: pointer;
-  background: whitesmoke;
-}
-
-mat-list-item:not(:first-of-type) {
-  border-top: 1px solid #efefef;
 }
 
 .symbol {
@@ -120,14 +90,6 @@ mat-card-actions {
 
 .full-width {
   width: 100%;
-}
-
-.nav-link {
-  color: rgba(0, 0, 0, 0.54);
-  display: flex !important;
-  align-items: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 // UI LOGIN
