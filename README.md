@@ -176,5 +176,5 @@ Se actualiza karma.config. Para un repo con un solo proyecto, sería:
 Se añade un package.json a nivel del proyecto, con el script test:prod
 
 ```json
- "test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
+"test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
 ```
