@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Course } from '../../models/courses';
+import { Lesson } from '../../models/lessons';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,19 @@ export class CoursesRepoService {
       },
     ];
     return of(coursesMock);
+  }
+
+  getLessonsMock() {
+    const lessonsMock: Lesson[] = [
+      { title: 'Hello Angular' },
+      { title: 'Component Fundamentals' },
+      { title: 'Template Driven Forms' },
+      { title: 'Angular Services' },
+      { title: 'Server Communication' },
+      { title: 'Component Driven Architecture' },
+      { title: 'Angular Routing' },
+      { title: 'Unit Testing Fundamentals' },
+    ];
+    return of(lessonsMock);
   }
 }
