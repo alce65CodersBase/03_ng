@@ -2,6 +2,8 @@
 
 Sample project in the FEM Course "Angular 13 Fundamentals"
 
+By **Lukas Ruebbelke**
+
 ```shell
 ng g app courses --routing -p sdi --style scss 
 ```
@@ -106,3 +108,65 @@ export class MaterialModule {}
 
 Remove the app.component placeholder
 Add basic Material structure to app.component
+
+
+## Routing
+
+Se definen en app component las rutas de la aplicación en un objeto links, del tipo MenuOption
+
+```ts
+type MenuOption = {
+  path: string;
+  icon: string;
+  title: string;
+};
+```
+
+Se añaden las rutas
+
+- Home
+- Courses
+
+Se crean los Módulos/Componentes correspondientes
+Se actualiza app Router con las rutas definidas en app.component
+
+```shell
+ng g m home -m app --route home --project courses
+ng g m courses -m app --route courses --project courses   
+```
+
+Se crea el módulo Core, no lazy
+
+```shell
+ng g m core -m app --project courses  
+ng g c core/menu --project courses  
+```
+
+Se añade el componente menu en app component
+
+```html
+<nav>
+  <a mat-button class="nav-link"
+  *ngFor="let link of links"
+  [routerLink]="link.path" routerLinkActive="active">
+    <mat-icon>{{link.icon}}</mat-icon>
+    {{link.title}}
+  </a>
+</nav>
+```
+
+Se consume el componente menu en app component
+
+## Courses
+
+Se crea el modelo de datos y umn servicio con un mock de datos iniciales
+
+Se añade en el componente Courses
+
+- La lista de cursos
+- El detalle del componente seleccionado
+
+Se crean los métodos responsables de
+
+- Seleccionar un curso
+- Eliminar un curso

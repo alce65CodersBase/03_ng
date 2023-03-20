@@ -3,10 +3,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './core/core.module';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MaterialModule, NoopAnimationsModule],
+      imports: [
+        RouterTestingModule,
+        MaterialModule,
+        NoopAnimationsModule,
+        CoreModule,
+      ],
       declarations: [AppComponent],
     }).compileComponents();
   });
