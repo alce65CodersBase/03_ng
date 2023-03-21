@@ -170,3 +170,26 @@ Se crean los métodos responsables de
 
 - Seleccionar un curso
 - Eliminar un curso
+
+## Lessons
+
+Se crea el modelo de datos y umn servicio con un mock de datos iniciales
+
+Se añade en el componente Home
+
+- La lista de lecciones
+- El detalle del componente seleccionado
+
+Se crea el método responsable de
+
+- Seleccionar un curso
+
+## Courses Form
+
+En el componente Courses, en la parte correspondiente al detalle,
+se añade un formulario capaz de mostrar los datos de un curso,
+editarlos o crear un curso nuevo.
+
+Se utiliza un formulario template driven asociando directamente
+los ngModel de cada control con la propiedad selectedCourse,
+de forma que el formulario toma de la propiedad sus valores iniciales.
