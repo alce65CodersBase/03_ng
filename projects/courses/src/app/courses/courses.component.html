@@ -13,7 +13,7 @@
             <span matListItemLine>
               {{ course.description }}
             </span>
-            <button mat-icon-button color="warn" (click)="deleteCourse($event, course.id)">
+            <button class="delete-button" mat-icon-button color="warn" (click)="deleteCourse($event, course.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-list-item>
@@ -57,8 +57,9 @@
         <mat-card-actions>
 
           <!-- COURSE ACTIONS -->
-          <button type="submit" [disabled]="courseForm.invalid" mat-button color="primary">Save</button>
-          <button type="button" mat-button (click)="resetCourse()">Cancel</button>
+          <button type="submit" class="save-button" [disabled]="courseForm.invalid" mat-button
+            color="primary">Save</button>
+          <button type="button" class="cancel-button" mat-button (click)="resetCourse()">Cancel</button>
         </mat-card-actions>
 
       </form>
