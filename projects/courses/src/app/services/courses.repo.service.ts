@@ -24,7 +24,7 @@ export class CoursesRepoService {
         id: 2,
         title: 'JavaScript The HARDEST PARTS EVER!',
         description: 'Learn the JavaScript like a pro! with Will',
-        percentComplete: 26,
+        percentComplete: 6,
         favorite: true,
       },
     ];
