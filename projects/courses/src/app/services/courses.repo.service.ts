@@ -7,10 +7,6 @@ import { Lesson } from '../../models/lessons';
   providedIn: 'root',
 })
 export class CoursesRepoService {
-  constructor() {
-    //
-  }
-
   getCoursesMock() {
     const coursesMock: Course[] = [
       {
@@ -25,6 +21,13 @@ export class CoursesRepoService {
         title: 'JavaScript The HARDEST PARTS EVER!',
         description: 'Learn the JavaScript like a pro! with Will',
         percentComplete: 6,
+        favorite: true,
+      },
+      {
+        id: 3,
+        title: 'Rapid Application Development Patterns',
+        description: 'THIS MUST BE DONE BY 3:30 OR ELSE! Dont forget!',
+        percentComplete: 98,
         favorite: true,
       },
     ];
