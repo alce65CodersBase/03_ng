@@ -1,4 +1,4 @@
-# Courses
+# Courses Application
 
 Sample project in the FEM Course "Angular 13 Fundamentals"
 
@@ -109,7 +109,6 @@ export class MaterialModule {}
 Remove the app.component placeholder
 Add basic Material structure to app.component
 
-
 ## Routing
 
 Se definen en app component las rutas de la aplicación en un objeto links, del tipo MenuOption
@@ -193,3 +192,35 @@ editarlos o crear un curso nuevo.
 Se utiliza un formulario template driven asociando directamente
 los ngModel de cada control con la propiedad selectedCourse,
 de forma que el formulario toma de la propiedad sus valores iniciales.
+
+## Server connection
+
+Se crea un Repo.Interface que define las operaciones estándar de un API Rest
+
+```ts
+export interface ApiRepo<T extends { id: unknown }> {
+  loadItems(): Observable<T[]>;
+  getItem(id: T['id']): Observable<T>;
+  createItem(task: Omit<T, 'id'>): Observable<T>;
+  updateItem(task: Partial<T>): Observable<T>;
+  deleteItem(id: T['id']): Observable<void>;
+}
+```
+
+Se implementa en Courses.Api.Repo.Service para obtener la lista de los cursos a partir de un API
+
+El Api se pude crear fácilmente utilizando JSON.Server
+En este caso se utiliza un backend con Express
+
+Se crea un CoursesApiRepo extendiendo el interfaz.
+Se implementan las funciones utilizando httpClient
+Se utiliza un pipe de observables para ajustar los datos 
+de la respuesta del server al formato definido en el interface
+Se añade un control de errores
+
+En el componente Courses se añaden las funcionalidades de:
+
+- cargar los datos del API
+- añadir cursos al API (create)
+- actualizar los cursos del API (update)
+- eliminar cursos del API (delete)

@@ -4,7 +4,7 @@ Sample project for learning Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
 
-## Instalation
+## Installation
 
 ### Workspace
 
@@ -48,7 +48,7 @@ Se añade el fichero de configuración de Sonar
 
 Se verifican los comandos de sonar:
 
-- linter: npx eslint --ignore-path .gitignore 
+- linter: npx eslint --ignore-path .gitignore
 - test:prod: ng test --code-coverage --no-watch --browsers=ChromeHeadless",
 
 Se añade husky para los hooks de git
