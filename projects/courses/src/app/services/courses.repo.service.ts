@@ -10,23 +10,23 @@ export class CoursesRepoService {
   getCoursesMock() {
     const coursesMock: Course[] = [
       {
-        id: 1,
+        id: '1',
         title: 'Angular 13 Fundamentals',
         description: 'Learn the fundamentals of Angular 13',
         percentComplete: 26,
         favorite: true,
       },
       {
-        id: 2,
+        id: '2',
         title: 'JavaScript The HARDEST PARTS EVER!',
         description: 'Learn the JavaScript like a pro! with Will',
         percentComplete: 6,
         favorite: true,
       },
       {
-        id: 3,
+        id: '3',
         title: 'Rapid Application Development Patterns',
-        description: 'THIS MUST BE DONE BY 3:30 OR ELSE! Dont forget!',
+        description: 'This must be done by 3:30 or else! Don`t forget!',
         percentComplete: 98,
         favorite: true,
       },

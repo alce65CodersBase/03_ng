@@ -1,49 +1,62 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, catchError } from 'rxjs';
+import { Observable, throwError, catchError, map } from 'rxjs';
 import { ApiRepo } from './repo.interface';
 import { Course } from '../../models/courses';
 
-type ErrorInfo = string;
+type ApiResponse = {
+  results: Course[];
+  // El endpoint devuelve {results: []}
+};
 
 @Injectable({
   providedIn: 'root',
 })
-export class CoursesApiRepoService implements ApiRepo<Course, ErrorInfo> {
+export class CoursesApiRepoService implements ApiRepo<Course> {
   url: string;
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:3000/courses';
-    // El endpoint devuelve ...
+    this.url = 'http://localhost:5600/courses';
   }
 
-  loadItems(): Observable<Course[] | string> {
-    return this.http.get<Course[]>(this.url).pipe(catchError(this.handleError));
-  }
-
-  getItem(id: Course['id']) {
-    const url = this.url + '/' + id;
-    return this.http.get<Course>(url).pipe(catchError(this.handleError));
-  }
-
-  createItem(course: Omit<Course, 'id'>) {
+  loadItems(): Observable<Course[]> {
     return this.http
-      .post<Course>(this.url, course)
+      .get<ApiResponse>(this.url)
+      .pipe(map((data) => data.results))
       .pipe(catchError(this.handleError));
   }
 
-  updateItem(course: Partial<Course>) {
+  getItem(id: Course['id']): Observable<Course> {
+    const url = this.url + '/' + id;
+    return this.http
+      .get<ApiResponse>(url)
+      .pipe(map((data) => data.results[0]))
+      .pipe(catchError(this.handleError));
+  }
+
+  createItem(course: Omit<Course, 'id'>): Observable<Course> {
+    return this.http
+      .post<ApiResponse>(this.url, course)
+      .pipe(map((data) => data.results[0]))
+      .pipe(catchError(this.handleError));
+  }
+
+  updateItem(course: Partial<Course>): Observable<Course> {
     const url = this.url + '/' + course.id;
     return this.http
-      .patch<Course>(url, course)
+      .patch<ApiResponse>(url, course)
+      .pipe(map((data) => data.results[0]))
       .pipe(catchError(this.handleError));
   }
 
-  deleteItem(id: Course['id']) {
+  deleteItem(id: Course['id']): Observable<void> {
     const url = this.url + '/' + id;
-    return this.http.delete<object>(url).pipe(catchError(this.handleError));
+    return this.http
+      .delete<ApiResponse>(url)
+      .pipe(map(() => undefined))
+      .pipe(catchError(this.handleError));
   }
 
-  private handleError(error: HttpErrorResponse): Observable<string> {
+  private handleError(error: HttpErrorResponse) {
     let message = '';
     if (error.status === 0) {
       // A client-side or network error ocurred.
