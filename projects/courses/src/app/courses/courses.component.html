@@ -58,8 +58,8 @@
 
           <!-- COURSE ACTIONS -->
           <button type="submit" class="save-button" [disabled]="courseForm.invalid" mat-button
-            color="primary">Save</button>
-          <button type="button" class="cancel-button" mat-button (click)="resetCourse()">Cancel</button>
+            color="primary">{{selectedCourse?.id ? 'Save' : 'Add'}}</button>
+          <button type="button" class="cancel-button" mat-button (click)="resetCourse()">Clear</button>
         </mat-card-actions>
 
       </form>
