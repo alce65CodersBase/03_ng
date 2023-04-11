@@ -72,7 +72,10 @@ export class CoursesComponent implements OnInit {
   }
 
   updateCourse() {
-    if (!this.selectedCourse) return;
+    if (!this.selectedCourse) {
+      console.log('NOT possible update');
+      return;
+    }
     this.repoSrv.updateItem(this.selectedCourse).subscribe({
       next: (course) => {
         this.courses = this.courses.map((item) =>
@@ -88,7 +91,10 @@ export class CoursesComponent implements OnInit {
   }
 
   addCourse() {
-    if (!this.selectedCourse) return;
+    if (!this.selectedCourse) {
+      console.log('NOT possible create');
+      return;
+    }
     this.repoSrv.createItem(this.selectedCourse).subscribe({
       next: (course) => {
         this.courses = [...this.courses, course];

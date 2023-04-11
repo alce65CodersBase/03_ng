@@ -4,7 +4,7 @@ import { Observable, throwError, catchError, map } from 'rxjs';
 import { ApiRepo } from './repo.interface';
 import { Course } from '../../models/courses';
 
-type ApiResponse = {
+export type ApiResponse = {
   results: Course[];
   // El endpoint devuelve {results: []}
 };
