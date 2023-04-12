@@ -11,7 +11,7 @@
       </mat-card-header>
       <form #courseForm="ngForm" (ngSubmit)="saveCourse()">
         <mat-card-content *ngIf="selectedCourse">
-  
+
           <mat-form-field class="full-width">
             <input matInput placeholder="Title" [(ngModel)]="selectedCourse.title" name="title" required type="text">
           </mat-form-field>
@@ -30,7 +30,7 @@
               Favorite
             </mat-checkbox>
           </section>
-  
+
         </mat-card-content>
         <mat-card-actions>-->
 
@@ -39,12 +39,10 @@
             color="primary">{{selectedCourse?.id ? 'Save' : 'Add'}}</button>
           <button type="button" class="cancel-button" mat-button (click)="resetCourse()">Clear</button>
         </mat-card-actions>
-  
+
       </form>
       <hr>
       <pre>{{courseForm.value | json}}</pre>
       <pre>{{courseForm.valid | json}}</pre>
-  
-  
     </mat-card>
   </div> -->
