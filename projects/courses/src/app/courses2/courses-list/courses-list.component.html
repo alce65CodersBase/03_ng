@@ -1,22 +1,20 @@
-<div class="courses-list">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Course List
-      </mat-card-title>
-    </mat-card-header>
-    <!-- <mat-card-content>
-      <mat-list>
-        <mat-list-item class="list-item" *ngFor="let course of courses" role="button" (click)="selectCourse(course)">
-          <h3 matListItemTitle>{{ course.title | titlecase }}</h3>
-          <span matListItemLine>
-            {{ course.description }}
-          </span>
-          <button class="delete-button" mat-icon-button color="warn" (click)="deleteCourse($event, course.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content> -->
-  </mat-card>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Course List (Component)
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item class="list-item" *ngFor="let course of courses" role="button" (click)="selectCourse(course)">
+        <h3 matListItemTitle>{{ course.title | titlecase }}</h3>
+        <span matListItemLine>
+          {{ course.description }}
+        </span>
+        <button class="delete-button" mat-icon-button color="warn" (click)="deleteCourse($event, course.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

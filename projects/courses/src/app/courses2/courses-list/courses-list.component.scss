@@ -1,7 +1,11 @@
-.courses-list {
-  width: 49%;
+--mdc-list-list-item-three-line-container-height :host {
+  width: 100%;
 }
 
-.list-item {
-  height: fit-content;
+:host {
+  width: 49%;
+
+  .list-item {
+    height: fit-content;
+  }
 }

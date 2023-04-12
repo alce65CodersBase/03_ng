@@ -47,8 +47,7 @@ export class CoursesComponent implements OnInit {
     this.title = this.selectedCourse.title;
   }
 
-  deleteCourse(ev: Event, id: Course['id']) {
-    ev.stopImmediatePropagation();
+  deleteCourse(id: Course['id']) {
     this.repoSrv.deleteItem(id).subscribe({
       next: () => {
         this.courses = this.courses.filter((course) => course.id !== id);
