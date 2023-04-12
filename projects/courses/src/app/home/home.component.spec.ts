@@ -1,8 +1,12 @@
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from '../material.module';
+import { RegisterComponent } from './register/register.component';
+import { CoreModule } from '../core/core.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,8 +15,13 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
-      imports: [MaterialModule],
+      declarations: [HomeComponent, RegisterComponent],
+      imports: [
+        MaterialModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        CoreModule,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);

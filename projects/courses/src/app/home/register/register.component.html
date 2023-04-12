@@ -1,0 +1,22 @@
+<h2>Register</h2>
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <div class="control-group">
+    <input type="text" id="firstName" formControlName="firstName" placeholder=" ">
+    <label for="">Nombre</label>
+  </div>
+  <div class="control-group">
+    <input type="text" id="surname" formControlName="surname" placeholder=" ">
+    <label for="">Apellidos</label>
+  </div>
+  <div class="control-group">
+    <input type="email" id="email" formControlName="email" placeholder=" ">
+    <label for="">Email</label>
+  </div>
+  <div class="control-group">
+    <input type="password" id="passwd" formControlName="passwd" placeholder=" ">
+    <label for="">Password</label>
+  </div>
+  <sdi-file-input (fileEvent)="handleFile($event)"></sdi-file-input>
+
+  <button type="submit" [disabled]="form.invalid">Registrar</button>
+</form>

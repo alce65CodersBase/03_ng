@@ -1,1 +1,11 @@
 // Component CSS
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+}
+
+div {
+  flex: 1 1 30%;
+  padding: 1rem;
+}

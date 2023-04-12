@@ -5,10 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { RegisterComponent } from './register/register.component';
 import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, RegisterComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
