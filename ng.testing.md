@@ -37,7 +37,7 @@ describe('SampleComponent', () => {
 
 ### Interactions with the wrapped DOM
 
- DebugElement methods
+DebugElement methods
 
 - **query**
 - **queryAll**
