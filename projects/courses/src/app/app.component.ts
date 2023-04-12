@@ -14,6 +14,11 @@ export class AppComponent {
     this.links = [
       { path: '/home', icon: 'home', title: 'Home' },
       { path: '/courses', icon: 'view_list', title: 'Courses' },
+      {
+        path: '/courses2',
+        icon: 'view_list',
+        title: 'Courses Multi Components',
+      },
     ];
   }
 }
