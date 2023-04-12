@@ -5,16 +5,4 @@
 .courses-containers {
   display: flex;
   justify-content: space-around;
-
-  .courses-list {
-    width: 49%;
-  }
-
-  .course-details {
-    width: 49%;
-  }
-
-  .list-item {
-    height: fit-content;
-  }
 }
