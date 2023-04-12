@@ -224,3 +224,8 @@ En el componente Courses se añaden las funcionalidades de:
 - añadir cursos al API (create)
 - actualizar los cursos del API (update)
 - eliminar cursos del API (delete)
+
+## Prueba de un componente "file upload"
+
+- Se crea en Core-Module y se exporta
+- Se utiliza desde Register component (en home module)
