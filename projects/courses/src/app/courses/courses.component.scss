@@ -1,0 +1,20 @@
+--mdc-list-list-item-three-line-container-height :host {
+  width: 100%;
+}
+
+.courses-containers {
+  display: flex;
+  justify-content: space-around;
+
+  .courses-list {
+    width: 49%;
+  }
+
+  .course-details {
+    width: 49%;
+  }
+
+  .list-item {
+    height: fit-content;
+  }
+}

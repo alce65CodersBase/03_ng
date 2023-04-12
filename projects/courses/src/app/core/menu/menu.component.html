@@ -1,0 +1,6 @@
+<nav *ngFor="let link of links">
+  <a mat-button class="nav-link" [routerLink]="link.path" routerLinkActive="active">
+    <mat-icon>{{link.icon}}</mat-icon>
+    {{link.title}}
+  </a>
+</nav>

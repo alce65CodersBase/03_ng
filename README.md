@@ -4,7 +4,7 @@ Sample project for learning Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
 
-## Instalation
+## Installation
 
 ### Workspace
 
@@ -48,7 +48,7 @@ Se añade el fichero de configuración de Sonar
 
 Se verifican los comandos de sonar:
 
-- linter: npx eslint --ignore-path .gitignore 
+- linter: npx eslint --ignore-path .gitignore
 - test:prod: ng test --code-coverage --no-watch --browsers=ChromeHeadless",
 
 Se añade husky para los hooks de git
@@ -77,7 +77,9 @@ Se crea la rama de configuración y utiliza
 - Creación de la PR
 - Verificación de la PR
 
-### Proyectos
+## Proyectos
+
+### app USERS + lib CORE
 
 Nueva rama feature/project
 
@@ -159,6 +161,7 @@ Se actualiza karma.config. Para un repo con un solo proyecto, sería:
 
 ```js
   {
+    require("karma-mocha-reporter"),
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
@@ -168,6 +171,78 @@ Se actualiza karma.config. Para un repo con un solo proyecto, sería:
       ],
       includeAllSources: true,
     },
+    reporters: ["mocha", "kjhtml"],
   }
-
 ```
+
+Se añade un package.json a nivel del proyecto, con el script test:prod
+
+```json
+"test:prod": "ng test --code-coverage --no-watch --browsers=ChromeHeadless"
+```
+
+## App USERS
+
+Ejemplo inicial de proyecto en Angular
+
+Toma de la lib CORE los standAlone components:
+
+- Layout
+  - Header
+  - Footer
+  - Menu
+  - Profile (svg component)
+- Controls
+
+### Routing
+
+Se definen de forma Lazy las rutas y sus correspondientes módulos:
+
+- Inicio (Home)
+- Taras (Tasks)
+- Nosotros (About)
+- User (User)
+
+Al tomar el layout de la librería, no es necesario un módulo estático (no lazy)
+
+### Tasks
+
+En el modulo **Tasks** se crea un CRUD de tareas
+
+Los componentes implicados son:
+
+- List (controlador)
+- Card (presentador)
+- Add (presentador)
+
+El servicio mock.data se limita a proporcionar un mock de datos inicial (2 tareas)
+
+No existe ninguna persistencia de los datos
+
+### Users
+
+En el módulo **About** se crea un CRUD de usuarios
+
+Los componentes implicados son:
+
+- List (presentador)
+- Card (presentador)
+- Add (presentador)
+
+Toda la lógica del CRUD reside en el servicio UsersService
+
+El servicio mock.data se limita a proporcionar un mock de datos inicial (2 usuarios)
+
+No existe ninguna persistencia de los datos
+
+### Profile
+
+En el módulo **User** se incluyen los componentes necesarios para el proceso de 
+registro / login / logout
+
+Existen los servicios
+
+- UserStateService que almacena el estado correspondiente al login/logout
+- UserRepoService que encapsula las llamadas a una API
+
+No se a definido ninguna API, por lo que el segundo servicio responde un error por consola

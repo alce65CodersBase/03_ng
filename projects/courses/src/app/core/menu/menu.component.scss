@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav-link {
+  color: rgba(0, 0, 0, 0.54);
+  align-items: center;
+  padding-inline: 2rem;
+
+  &.active {
+    color: brown;
+  }
+}

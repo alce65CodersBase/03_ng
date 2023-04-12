@@ -19,4 +19,15 @@ jobs:
         run: npm ci
       - name: Testing coverage
         run: npm run test:prod #Change for a valid npm script
-
+  TestCourses:
+    name: Tests App Courses
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Install modules
+        run: npm ci
+      - name: Testing coverage
+        run: npm run test:prod --project courses
+        working-directory: projects/courses
