@@ -7,10 +7,16 @@ import { Course } from 'projects/courses/src/models/courses';
   styleUrls: ['./courses-details.component.scss'],
 })
 export class CoursesDetailsComponent {
-  @Input() selectedCourse!: Course | null;
-  @Input() title: string | undefined;
+  title: string | undefined;
+  selectedCourse!: Course | null;
+
   @Output() saved: EventEmitter<void>;
   @Output() reseated: EventEmitter<void>;
+  @Input() set course(value: Course | null) {
+    if (!value) return;
+    this.selectedCourse = { ...value };
+    this.title = value.title;
+  }
 
   constructor() {
     this.title = '';

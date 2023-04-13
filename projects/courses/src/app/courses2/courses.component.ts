@@ -43,7 +43,7 @@ export class CoursesComponent implements OnInit {
   }
 
   selectCourse(course: Course | null) {
-    this.selectedCourse = { ...course } as Course;
+    this.selectedCourse = course as Course;
     this.title = this.selectedCourse.title;
   }
 

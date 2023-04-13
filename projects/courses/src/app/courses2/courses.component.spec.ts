@@ -1,5 +1,5 @@
 import { of, throwError } from 'rxjs';
-import { DebugElement } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -22,10 +22,6 @@ const mockCourses: Course[] = [
   } as Course,
 ];
 
-const mockEvent = {
-  stopImmediatePropagation: () => null,
-};
-
 const mockRepoService = jasmine.createSpyObj<CoursesApiRepoService>(
   'CoursesApiRepoService',
   {
@@ -37,8 +33,6 @@ const mockRepoService = jasmine.createSpyObj<CoursesApiRepoService>(
     url: 'http://testing',
   }
 );
-
-mockRepoService.url = 'http://testing';
 
 describe('Given CoursesComponent', () => {
   let component: CoursesComponent;
@@ -54,6 +48,7 @@ describe('Given CoursesComponent', () => {
         NoopAnimationsModule,
         HttpClientTestingModule,
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         {
           provide: CoursesApiRepoService,
@@ -84,57 +79,63 @@ describe('Given CoursesComponent', () => {
       fixture.detectChanges();
     });
 
-    it('should click for select a course', () => {
+    it('should select a course in response to the event selected', () => {
       spyOn(component, 'selectCourse').and.callThrough();
-      const debugButton = debugElement.query(By.css('[role="button"]'));
-      debugButton.triggerEventHandler('click', mockEvent);
+      const debugCoursesList = debugElement.query(By.css('sdi-courses-list'));
+      debugCoursesList.triggerEventHandler('selected', mockCourses[0]);
       expect(component.selectCourse).toHaveBeenCalled();
     });
 
-    it('should click for delete a course', () => {
+    it('should delete a course in response to the event deleted', () => {
       spyOn(component, 'deleteCourse').and.callThrough();
-      const debugButton = debugElement.query(By.css('button.delete-button'));
-      debugButton.triggerEventHandler('click', mockEvent);
+      const debugCoursesList = debugElement.query(By.css('sdi-courses-list'));
+      debugCoursesList.triggerEventHandler('deleted', mockCourses[0].id);
       expect(component.deleteCourse).toHaveBeenCalled();
       expect(mockRepoService.deleteItem).toHaveBeenCalled();
     });
 
     it('should try to delete an invalid id', () => {
-      component.deleteCourse(mockEvent as unknown as Event, '2');
+      component.deleteCourse('2');
       expect(mockRepoService.deleteItem).toHaveBeenCalled();
       // expect(component.selectedCourse).toBeNull();
     });
 
-    it('should click for save a new course', () => {
+    it('should save a new course in response to the event saved', () => {
       component.selectedCourse = {} as Course;
       spyOn(component, 'saveCourse').and.callThrough();
       spyOn(component, 'addCourse').and.callThrough();
       console.log = jasmine.createSpy('log');
-      const debugForm = debugElement.query(By.css('form'));
-      debugForm.triggerEventHandler('submit');
+      const debugCoursesDetails = debugElement.query(
+        By.css('sdi-courses-details')
+      );
+      debugCoursesDetails.triggerEventHandler('saved');
       expect(component.saveCourse).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith('Add');
       expect(component.addCourse).toHaveBeenCalled();
       expect(mockRepoService.createItem).toHaveBeenCalled();
     });
 
-    it('should click for save a edited course', () => {
+    it('should save a edited course in response to the event saved', () => {
       component.selectedCourse = mockCourses[0];
       spyOn(component, 'saveCourse').and.callThrough();
       spyOn(component, 'updateCourse').and.callThrough();
       console.log = jasmine.createSpy('log');
-      const debugForm = debugElement.query(By.css('form'));
-      debugForm.triggerEventHandler('submit');
+      const debugCoursesDetails = debugElement.query(
+        By.css('sdi-courses-details')
+      );
+      debugCoursesDetails.triggerEventHandler('saved');
       expect(component.saveCourse).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith('Update');
       expect(component.updateCourse).toHaveBeenCalled();
       expect(mockRepoService.updateItem).toHaveBeenCalled();
     });
 
-    it('should click for reset to null the selected course', () => {
+    it('should reset to null the selected course in response to the event saved', () => {
       spyOn(component, 'resetCourse').and.callThrough();
-      const debugButton = debugElement.query(By.css('button.cancel-button'));
-      debugButton.triggerEventHandler('click');
+      const debugCoursesDetails = debugElement.query(
+        By.css('sdi-courses-details')
+      );
+      debugCoursesDetails.triggerEventHandler('reseated');
       expect(component.resetCourse).toHaveBeenCalled();
       expect(component.selectedCourse).toEqual({
         id: '',
@@ -180,7 +181,7 @@ describe('Given CoursesComponent', () => {
         .createSpy()
         .and.returnValue(throwError(() => 'Deleting Error'));
       console.log = jasmine.createSpy('log');
-      component.deleteCourse(mockEvent as unknown as Event, '1');
+      component.deleteCourse('1');
       fixture.detectChanges();
       expect(mockRepoService.deleteItem).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith('Deleting Error');

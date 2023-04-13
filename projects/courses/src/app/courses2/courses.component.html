@@ -3,7 +3,7 @@
   <sdi-courses-list [courses]="courses" (selected)="selectCourse($event)"
     (deleted)="deleteCourse($event)"></sdi-courses-list>
 
-  <sdi-courses-details [selectedCourse]="selectedCourse" [title]="selectedCourse?.title" (saved)="saveCourse()"
+  <sdi-courses-details [course]="selectedCourse" (saved)="saveCourse()"
     (reseated)="resetCourse()"></sdi-courses-details>
 
 </div>
