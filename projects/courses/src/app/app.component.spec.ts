@@ -4,6 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -11,6 +12,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MaterialModule,
         NoopAnimationsModule,
+        HttpClientModule,
         CoreModule,
       ],
       declarations: [AppComponent],

@@ -12,7 +12,15 @@
   </span>
   <span class="spacer"></span>
   <button class="login" mat-mini-fab routerLink="auth">
-    <mat-icon>person</mat-icon>
+
+    <ng-container *ngIf="auth.isLogged$ | async; else notLogged">
+      <mat-icon>person</mat-icon>
+    </ng-container>
+    <ng-template #notLogged>
+      <mat-icon>login</mat-icon>
+    </ng-template>
+
+
   </button>
 </mat-toolbar>
 

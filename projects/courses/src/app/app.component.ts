@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuOption } from '../types/menu';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'sdi-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title: string;
   links: MenuOption[];
   extraLinks: MenuOption[];
-  constructor() {
+  constructor(public auth: AuthService) {
     this.title = 'Courses from Angular 13 Fundamentals';
     this.links = [
       { path: '/home', icon: 'home', title: 'Home' },
