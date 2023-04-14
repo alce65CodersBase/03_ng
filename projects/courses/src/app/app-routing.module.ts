@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { AdminPayrollComponent } from './admin/admin-payroll/admin-payroll.component';
 import { AdminVacationComponent } from './admin/admin-vacation/admin-vacation.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,8 +28,12 @@ const routes: Routes = [
       { path: 'payroll', component: AdminPayrollComponent },
       { path: 'vacation', component: AdminVacationComponent },
     ],
+    canActivate: [AuthGuard],
   },
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
 ];
 
 @NgModule({
