@@ -28,6 +28,7 @@ const routes: Routes = [
       { path: 'vacation', component: AdminVacationComponent },
     ],
   },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 ];
 
 @NgModule({
