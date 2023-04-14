@@ -1,23 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-export type User = {
-  id: string;
-  email: string;
-  passwd: string;
-  firstName: string;
-  surname: string;
-  role: string;
-  image: ImageInfo;
-};
-
-export type ImageInfo = {
-  urlOriginal: string;
-  url: string;
-  urlOut: string;
-  mimetype: string;
-  size: number;
-};
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'sdi-register',
@@ -27,7 +10,7 @@ export type ImageInfo = {
 export class RegisterComponent {
   form: FormGroup;
   file!: File;
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private auth: AuthService) {
     this.form = this.fb.group({
       email: ['', [Validators.required]],
       passwd: ['', [Validators.required]],
@@ -50,12 +33,6 @@ export class RegisterComponent {
     formData.append('surname', this.form.controls['surname'].value);
     formData.append('image', this.file);
     formData.forEach((value) => console.log('Submit', value));
-    this.makeRegistration(formData);
-  }
-
-  makeRegistration(formData: FormData) {
-    const apiUrl = 'http://localhost:5600/users/register';
-    const upload$ = this.http.post(apiUrl, formData);
-    upload$.subscribe();
+    this.auth.register(formData);
   }
 }
