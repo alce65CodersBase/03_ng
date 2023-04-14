@@ -7,9 +7,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register/register.component';
 import { CoreModule } from '../core/core.module';
+import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 
 @NgModule({
-  declarations: [HomeComponent, RegisterComponent],
+  declarations: [HomeComponent, RegisterComponent, LessonDetailComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

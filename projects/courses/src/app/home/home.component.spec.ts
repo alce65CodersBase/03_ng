@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import { MaterialModule } from '../material.module';
 import { RegisterComponent } from './register/register.component';
 import { CoreModule } from '../core/core.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,9 +18,10 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent, RegisterComponent],
       imports: [
-        MaterialModule,
+        RouterTestingModule,
         HttpClientModule,
         ReactiveFormsModule,
+        MaterialModule,
         CoreModule,
       ],
     }).compileComponents();

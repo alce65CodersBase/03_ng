@@ -36,14 +36,14 @@ export class CoursesRepoService {
 
   getLessonsMock() {
     const lessonsMock: Lesson[] = [
-      { title: 'Hello Angular' },
-      { title: 'Component Fundamentals' },
-      { title: 'Template Driven Forms' },
-      { title: 'Angular Services' },
-      { title: 'Server Communication' },
-      { title: 'Component Driven Architecture' },
-      { title: 'Angular Routing' },
-      { title: 'Unit Testing Fundamentals' },
+      { title: 'Hello Angular', id: '1' },
+      { title: 'Component Fundamentals', id: '2' },
+      { title: 'Template Driven Forms', id: '3' },
+      { title: 'Angular Services', id: '4' },
+      { title: 'Server Communication', id: '5' },
+      { title: 'Component Driven Architecture', id: '6' },
+      { title: 'Angular Routing', id: '7' },
+      { title: 'Unit Testing Fundamentals', id: '8' },
     ];
     return of(lessonsMock);
   }
