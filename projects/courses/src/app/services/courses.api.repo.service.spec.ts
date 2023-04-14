@@ -6,11 +6,12 @@ import {
 
 import { ApiResponse, CoursesApiRepoService } from './courses.api.repo.service';
 import { Course } from '../../models/courses';
+import { environment } from '../../environments/environment';
 
 describe('CoursesApiRepoService', () => {
   let service: CoursesApiRepoService;
   let httpClientMock: HttpTestingController;
-  const url = 'http://localhost:5600/courses';
+  const url = environment.apiUrlBase + '/courses';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -68,8 +69,7 @@ describe('CoursesApiRepoService', () => {
       statusText: '',
     };
 
-    const errorMessage =
-      'Something bad happened; Http failure response for http://localhost:5600/courses: 0 ';
+    const errorMessage = `Something bad happened; Http failure response for ${environment.apiUrlBase}/courses: 0 `;
 
     service.loadItems().subscribe({
       next: (data) => data,

@@ -11,8 +11,16 @@
     </span>
   </span>
   <span class="spacer"></span>
-  <button class="login" mat-mini-fab>
-    <mat-icon>person</mat-icon>
+  <button class="login" mat-mini-fab routerLink="auth">
+
+    <ng-container *ngIf="auth.isLogged$ | async; else notLogged">
+      <mat-icon>person</mat-icon>
+    </ng-container>
+    <ng-template #notLogged>
+      <mat-icon>login</mat-icon>
+    </ng-template>
+
+
   </button>
 </mat-toolbar>
 
@@ -20,6 +28,8 @@
   <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
     <!-- Sidenav Menu -->
     <sdi-menu [links]="links"></sdi-menu>
+    <hr>
+    <sdi-menu [links]="extraLinks"></sdi-menu>
   </mat-sidenav>
 
   <div class="container">

@@ -1,0 +1,9 @@
+<div class="courses-containers">
+
+  <sdi-courses-list [courses]="courses" (selected)="selectCourse($event)"
+    (deleted)="deleteCourse($event)"></sdi-courses-list>
+
+  <sdi-courses-details [course]="selectedCourse" (saved)="saveCourse()"
+    (reseated)="resetCourse()"></sdi-courses-details>
+
+</div>

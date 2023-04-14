@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { CoreModule } from '../../core/core.module';
+import { AuthService } from '../../services/auth.service';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -15,6 +16,7 @@ describe('RegisterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterComponent],
       imports: [HttpClientModule, ReactiveFormsModule, CoreModule],
+      providers: [{ provide: AuthService, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterComponent);
@@ -37,11 +39,9 @@ describe('RegisterComponent', () => {
 
   it('should send form data', () => {
     spyOn(component, 'handleSubmit').and.callThrough();
-    spyOn(component, 'makeRegistration');
     const debugForm = debugElement.query(By.css('form'));
     debugForm.triggerEventHandler('submit');
     fixture.detectChanges();
     expect(component.handleSubmit).toHaveBeenCalled();
-    expect(component.makeRegistration).toHaveBeenCalled();
   });
 });

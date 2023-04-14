@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, catchError, map } from 'rxjs';
 import { ApiRepo } from './repo.interface';
 import { Course } from '../../models/courses';
+import { environment } from '../../environments/environment';
 
 export type ApiResponse = {
   results: Course[];
@@ -15,7 +16,7 @@ export type ApiResponse = {
 export class CoursesApiRepoService implements ApiRepo<Course> {
   url: string;
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:5600/courses';
+    this.url = environment.apiUrlBase + '/courses';
   }
 
   loadItems(): Observable<Course[]> {
