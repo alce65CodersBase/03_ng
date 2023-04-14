@@ -9,6 +9,7 @@ import { MenuOption } from '../types/menu';
 export class AppComponent {
   title: string;
   links: MenuOption[];
+  extraLinks: MenuOption[];
   constructor() {
     this.title = 'Courses from Angular 13 Fundamentals';
     this.links = [
@@ -20,5 +21,7 @@ export class AppComponent {
         title: 'Courses Multi Components',
       },
     ];
+
+    this.extraLinks = [{ path: '/admin', icon: 'face', title: 'Admin' }];
   }
 }

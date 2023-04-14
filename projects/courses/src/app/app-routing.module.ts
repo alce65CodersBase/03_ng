@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { AdminPayrollComponent } from './admin/admin-payroll/admin-payroll.component';
+import { AdminVacationComponent } from './admin/admin-vacation/admin-vacation.component';
 
 const routes: Routes = [
   {
@@ -15,6 +18,15 @@ const routes: Routes = [
     path: 'courses2',
     loadChildren: () =>
       import('./courses2/courses2.module').then((m) => m.Courses2Module),
+  },
+
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: 'payroll', component: AdminPayrollComponent },
+      { path: 'vacation', component: AdminVacationComponent },
+    ],
   },
 ];
 
